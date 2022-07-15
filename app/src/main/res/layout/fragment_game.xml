@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".game.GameFragment">
+
+
+    <data>
+
+        <variable
+            name="game"
+            type="com.aristotele.trivia2022.game.GameViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CDDC39">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_submit"
+                android:layout_width="305dp"
+
+                android:layout_height="94dp"
+                android:layout_marginTop="20dp"
+                android:onClick="@{() -> game.buttonOnClickListener()}"
+                android:text="submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_score" />
+
+            <TextView
+                android:id="@+id/textView_question"
+                android:layout_width="356dp"
+                android:layout_height="163dp"
+                android:layout_marginTop="48dp"
+                android:background="#3F51B5"
+                android:gravity="center"
+                android:scrollbarSize="10dp"
+                android:text="@{game.questionTexet}"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="360dp"
+                android:layout_height="225dp"
+                android:layout_marginTop="28dp"
+                android:background="#FFC107"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_question">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#F44336"
+                    android:onClick="@{(v) -> game.selectOption(radioGroup,v)}"
+                    android:tag="@{game.radioButton1}"
+                    android:text="@{game.radioButton1}" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E91E63"
+                    android:onClick="@{(v) -> game.selectOption(radioGroup,v)}"
+                    android:tag="@{game.radioButton2}"
+                    android:text="@{game.radioButton2}" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#673AB7"
+                    android:onClick="@{(v) -> game.selectOption(radioGroup,v)}"
+                    android:tag="@{game.radioButton3}"
+                    android:text="@{game.radioButton3}" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#2196F3"
+                    android:onClick="@{(v) -> game.selectOption(radioGroup,v)}"
+                    android:tag="@{game.radioButton4}"
+                    android:text="@{game.radioButton4}" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView_score"
+                android:layout_width="356dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="12dp"
+                android:background="#FF6666"
+                android:gravity="center"
+                android:text="@{game.score.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
